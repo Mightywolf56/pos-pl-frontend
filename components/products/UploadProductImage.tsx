@@ -1,6 +1,6 @@
 "use client"
 
-import { uploadImage } from '@/actions/upload-image-action'
+import { uploadImage } from '@/actions/products/upload-image-action'
 import { getImagePath } from '@/app/src/utils'
 import Image from 'next/image'
 import { useCallback, useState } from 'react'

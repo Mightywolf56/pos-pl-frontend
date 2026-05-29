@@ -1,4 +1,4 @@
-import { submitOrder } from "@/actions/submit-order-action"
+import { submitOrder } from "@/actions/products/submit-order-action"
 import { useActionState, useEffect } from "react"
 import { useStore } from "@/app/src/store"
 import { toast } from "react-toastify"
