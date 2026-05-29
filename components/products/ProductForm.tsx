@@ -1,13 +1,14 @@
 import { CategoriesResponseSchema, Product } from "@/app/src/schemas"
 import UploadProductImage from "./UploadProductImage"
 
-async function getCategories() {
+async function getCategories(){
   const url = `${process.env.API_URL}/categories`
   const req = await fetch(url)
   const json = await req.json()
-  const categories = CategoriesResponseSchema.parse(json)
 
-  return categories
+  const data = CategoriesResponseSchema.parse(json)
+
+  return data.categories
 }
 
 export default async function ProductForm({product}: {product?: Product}) {

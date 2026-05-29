@@ -2,7 +2,6 @@ import { ProductSchema } from "@/app/src/schemas";
 import EditProductForm from "@/components/products/EditProductForm";
 import ProductForm from "@/components/products/ProductForm";
 import AdminHeading from "@/components/ui/AdminHeading";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

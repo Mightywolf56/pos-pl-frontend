@@ -19,7 +19,12 @@ export const CategorySchema = z.object({
   name: z.string(),
 });
 
-export const CategoriesResponseSchema = z.array(CategorySchema);
+export const CategoriesResponseSchema = z.object({
+  categories: z.array(CategorySchema),
+  total: z.number(),
+});
+
+export const CategoryResponseSchema = z.array(CategorySchema)
 
 export const CategoryWithProductsResponseSchema = CategorySchema.extend({
   products: z.array(ProductSchema),
@@ -99,8 +104,13 @@ export const ProductFormSchema = z.object({
   categoryId: z.coerce.string({ message: "La Categoria no es válida" }),
 });
 
+export const CategoryFormSchema = z.object({
+  name: z.string().min(1, 'El nombre es obligatorio'),
+});
+
 export type Product = z.infer<typeof ProductSchema>;
 export type ShoppingCart = z.infer<typeof ShoppingCartSchema>;
 export type CartItem = z.infer<typeof ShoppingCartContentSchema>;
+export type Category = z.infer<typeof CategorySchema>;
 export type Coupon = z.infer<typeof CouponResponseSchema>;
 export type Transaction = z.infer<typeof TransactionResponseSchema>;

@@ -1,4 +1,4 @@
-import { CategoriesResponseSchema } from "@/app/src/schemas";
+import { CategoriesResponseSchema, CategoryResponseSchema } from "@/app/src/schemas";
 import Logo from "./Logo";
 import Link from "next/link";
 
@@ -6,8 +6,10 @@ async function getCategories(){
   const url = `${process.env.API_URL}/categories`
   const req = await fetch(url)
   const json = await req.json()
-  const categories = CategoriesResponseSchema.parse(json)
-  return categories
+
+  const data = CategoriesResponseSchema.parse(json)
+
+  return data.categories
 }
 
 export default async function MainNav() {
@@ -21,8 +23,8 @@ export default async function MainNav() {
       </div>
 
       <nav className="flex flex-col md:flex-row gap-2 items-center mt-5 md:mt-0">
-        {categories.map(category => (
-          <Link key={category.id} href={`/${category.id}`} className='text-white hover:text-pink-500 font-bold p-2 text-2xl'>{category.name}</Link>
+        {categories?.map(category => (
+          <Link key={category.id} href={`/${category.id}`} className='text-white hover:text-pink-500 font-bold p-2 text-2xl'>{category?.name}</Link>
         ))}
       <Link 
         href={'/admin/sales'}
