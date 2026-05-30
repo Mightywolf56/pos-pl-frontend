@@ -45,9 +45,20 @@ const ShoppingCartContentSchema = ProductSchema.pick({
 export const ShoppingCartSchema = z.array(ShoppingCartContentSchema);
 
 export const CouponResponseSchema = z.object({
-  name: z.string().default(""),
-  message: z.string(),
+  name: z.string(),
+  message: z.string().optional(),
+  expirationDate: z.string().min(1, 'La fecha es obligatoria'),
   percentage: z.coerce.number().min(0).max(100).default(0),
+});
+
+export const CouponSchema = CouponResponseSchema.extend({
+  id: z.string(),
+  percentage: z.number(),
+});
+
+export const CouponsResponseSchema = z.object({
+  coupons: z.array(CouponSchema),
+  total: z.number(),
 });
 
 const OrderContentSchema = z.object({
@@ -112,5 +123,6 @@ export type Product = z.infer<typeof ProductSchema>;
 export type ShoppingCart = z.infer<typeof ShoppingCartSchema>;
 export type CartItem = z.infer<typeof ShoppingCartContentSchema>;
 export type Category = z.infer<typeof CategorySchema>;
-export type Coupon = z.infer<typeof CouponResponseSchema>;
+export type Coupon = z.infer<typeof CouponSchema>;
+export type AppliedCoupon = z.infer<typeof CouponResponseSchema>
 export type Transaction = z.infer<typeof TransactionResponseSchema>;

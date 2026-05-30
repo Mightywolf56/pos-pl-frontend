@@ -1,12 +1,12 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { Coupon, CouponResponseSchema, Product, ShoppingCart } from "./schemas";
+import { AppliedCoupon, Coupon, CouponResponseSchema, Product, ShoppingCart } from "./schemas";
 
 interface Store {
   contents: ShoppingCart
   total: number
   discount: number
-  coupon: Coupon
+  coupon: AppliedCoupon
   addToCart: (product: Product) => void
   updateQuantity: (id: Product['id'], quantity: number) => void
   removeFromCart: (id: Product['id']) => void
@@ -21,9 +21,10 @@ const initialState = {
   discount: 0,
   contents: [],
   coupon: {
-    percentage: 0,
     name: '',
-    message: ''
+    message: '',
+    percentage: 0,
+    expirationDate: ''
   },
 }
 

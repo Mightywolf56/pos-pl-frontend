@@ -10,7 +10,7 @@ export default function AdminNav() {
 
       <div className="flex gap-2 items-center">
         <Link
-          href={"/admin/categories"}
+          href={"/admin/coupons"}
           className="rounded text-white font-bold p-2 text-xl hover:text-pink-500"
         >
           Cupones

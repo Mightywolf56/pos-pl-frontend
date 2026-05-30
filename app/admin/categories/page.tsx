@@ -14,8 +14,7 @@ async function getCategories(take: number, skip: number) {
   const req = await fetch(url);
   const json = await req.json();
   const data = CategoriesResponseSchema.parse(json);
-
-  console.log("esto tiene data", data);
+  
   return {
     categories: data.categories,
     total: data.total,

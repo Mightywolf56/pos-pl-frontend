@@ -1,6 +1,6 @@
 "use server"
 
-import { ErrorResponseSchema, CategoriesResponseSchema, CategoryFormSchema } from "@/app/src/schemas"
+import { ErrorResponseSchema, CategoryFormSchema } from "@/app/src/schemas"
 
 type ActionStateType = {
   errors: string[]
